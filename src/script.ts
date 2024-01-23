@@ -12,21 +12,21 @@ const obj: object = {};
 // Функции
 
 const voidFunc = (params: object): void => {
-	console.log("Ничего не возвращает");
+    console.log("Ничего не возвращает");
 };
 
 const anyFunc = (): any => {
-	console.log("Может вернуть все");
-	return 1;
+    console.log("Может вернуть все");
+    return 1;
 };
 
 const neverFunc = (): never => {
-	while (true) {
-		console.log("Выполняеться всегда");
-	}
+    while (true) {
+        console.log("Выполняеться всегда");
+    }
 };
 const error = (): never => {
-	throw new Error("ERROR!");
+    throw new Error("ERROR!");
 };
 
 const spreadOp = (name: string, ...skills: string[]): void => {};
@@ -64,17 +64,17 @@ const str2: Name = "";
 // Enum - тип данных, смесь объекта и массива, можно обращаться по ключу и по индексу
 
 enum num {
-	one = 1,
-	two,
-	three,
-	four,
+    one = 1,
+    two,
+    three,
+    four,
 }
 
 console.log(num);
 
 enum urls {
-	yt = "https://youtube.com",
-	fb = "https://facebook.com",
+    yt = "https://youtube.com",
+    fb = "https://facebook.com",
 }
 console.log(urls.yt);
 
@@ -85,16 +85,16 @@ console.log(urls.yt);
 type person = { name: string; age: number };
 
 const user: person & { getInfo: () => string } = {
-	name: "Jamshud",
-	age: 15,
-	getInfo() {
-		return `Name: ${this.name}\nAge: ${this.age}`;
-	},
+    name: "Jamshud",
+    age: 15,
+    getInfo() {
+        return `Name: ${this.name}\nAge: ${this.age}`;
+    },
 };
 
 const user2: person = {
-	name: "Andrey",
-	age: 11,
+    name: "Andrey",
+    age: 11,
 };
 
 console.log(user.getInfo());
@@ -106,46 +106,46 @@ console.log(user.getInfo());
 // интерфейсы - это шаблон для объектов
 
 interface Rect {
-	readonly id: number;
-	color?: string;
-	size: {
-		width: number;
-		height: number;
-	};
+    readonly id: number;
+    color?: string;
+    size: {
+        width: number;
+        height: number;
+    };
 }
 
 const rect: Rect = {
-	id: 1,
-	size: {
-		width: 20,
-		height: 15,
-	},
+    id: 1,
+    size: {
+        width: 20,
+        height: 15,
+    },
 };
 
 const rect2: Rect = {
-	id: 2,
-	color: "red",
-	size: {
-		width: 40,
-		height: 50,
-	},
+    id: 2,
+    color: "red",
+    size: {
+        width: 40,
+        height: 50,
+    },
 };
 
 const rect3 = {
-	id: 3,
-	color: "blue",
-	size: {
-		width: 20,
-		height: 30,
-	},
+    id: 3,
+    color: "blue",
+    size: {
+        width: 20,
+        height: 30,
+    },
 } as Rect;
 
 const rect4 = <Rect>{
-	id: 4,
-	size: {
-		width: 25,
-		height: 30,
-	},
+    id: 4,
+    size: {
+        width: 25,
+        height: 30,
+    },
 };
 
 /* ------------------------------------ */
@@ -153,18 +153,18 @@ const rect4 = <Rect>{
 // Наследование интерфейсов
 
 interface RectWithArea extends Rect {
-	getArea(): number;
+    getArea(): number;
 }
 
 const rect5: RectWithArea = {
-	id: 5,
-	size: {
-		width: 30,
-		height: 45,
-	},
-	getArea(): number {
-		return this.size.width * this.size.height;
-	},
+    id: 5,
+    size: {
+        width: 30,
+        height: 45,
+    },
+    getArea(): number {
+        return this.size.width * this.size.height;
+    },
 };
 
 /* ------------------------------------ */
@@ -172,22 +172,22 @@ const rect5: RectWithArea = {
 // Имплементация классов от интерфейсов
 
 interface IUserInfo {
-	name: string;
-	age: number;
-	getInfo: () => IGetInfo;
+    name: string;
+    age: number;
+    getInfo: () => IGetInfo;
 }
 
 interface IGetInfo {
-	name: string;
-	age: number;
+    name: string;
+    age: number;
 }
 
 class UserInfo implements IUserInfo {
-	constructor(public name: string, public age: number) {}
+    constructor(public name: string, public age: number) {}
 
-	getInfo(): IGetInfo {
-		return { name: this.name, age: this.age };
-	}
+    getInfo(): IGetInfo {
+        return { name: this.name, age: this.age };
+    }
 }
 
 const jamshud = new UserInfo("Jamshud", 15);
@@ -197,14 +197,14 @@ console.log(jamshud.getInfo());
 /* ------------------------------------ */
 
 interface Styles {
-	[key: string]: string | number;
-	// key - ключ свойства, стоит указать как string
-	// Такая запись лучше если очень много ключей
+    [key: string]: string | number;
+    // key - ключ свойства, стоит указать как string
+    // Такая запись лучше если очень много ключей
 }
 
 const css: Styles = {
-	borger: "1px solid red",
-	marginTop: 20,
+    borger: "1px solid red",
+    marginTop: 20,
 };
 
 /* ------------------------------------ */
@@ -212,19 +212,19 @@ const css: Styles = {
 // Перегрузка функций
 
 interface Position2D {
-	x: number | undefined;
-	y: number | undefined;
+    x: number | undefined;
+    y: number | undefined;
 }
 
 interface Position3D extends Position2D {
-	z: number | undefined;
+    z: number | undefined;
 }
 
 function position(a: number, b: number): Position2D;
 function position(a: number, b: number, c: number): Position3D;
 
 function position(a?: number, b?: number, c?: number) {
-	return !c ? { x: a, y: b } : { x: a, y: b, z: c };
+    return !c ? { x: a, y: b } : { x: a, y: b, z: c };
 }
 
 console.log(position(5, 10));
@@ -234,21 +234,21 @@ console.log(position(5, 10));
 // Классы
 
 class Rectagnle {
-	width: number;
-	height: number;
+    width: number;
+    height: number;
 
-	constructor(width: number, height: number) {
-		this.width = width;
-		this.height = height;
-	}
+    constructor(width: number, height: number) {
+        this.width = width;
+        this.height = height;
+    }
 
-	getArea(): string {
-		return this.width * this.height + "m2";
-	}
+    getArea(): string {
+        return this.width * this.height + "m2";
+    }
 
-	getPerimetr(): string {
-		return (this.width + this.height) * 2 + "m";
-	}
+    getPerimetr(): string {
+        return (this.width + this.height) * 2 + "m";
+    }
 }
 
 const rectagnle = new Rectagnle(20, 10);
@@ -261,25 +261,25 @@ console.log(rectagnle.getPerimetr());
 // Наследование классов и модификаторы
 
 class Animal {
-	protected voice: string | undefined;
-	public color: string = "";
-	protected isPet: boolean | undefined;
+    protected voice: string | undefined;
+    public color: string = "";
+    protected isPet: boolean | undefined;
 
-	private go(): void {
-		console.log("GO");
-	}
+    private go(): void {
+        console.log("GO");
+    }
 }
 
 class Cat extends Animal {
-	constructor(voice: string, isPet: boolean) {
-		super();
-		this.voice = voice;
-		this.isPet = isPet;
-	}
+    constructor(voice: string, isPet: boolean) {
+        super();
+        this.voice = voice;
+        this.isPet = isPet;
+    }
 
-	setColor(color: string): void {
-		this.color = color;
-	}
+    setColor(color: string): void {
+        this.color = color;
+    }
 }
 
 const cat = new Cat("Мяу", true);
@@ -292,18 +292,18 @@ console.log(cat);
 // Абстрактные классы
 
 abstract class Component {
-	abstract render(): void;
-	abstract info(): string;
+    abstract render(): void;
+    abstract info(): string;
 }
 
 class App extends Component {
-	render(): void {
-		console.log("App is rendered");
-	}
+    render(): void {
+        console.log("App is rendered");
+    }
 
-	info(): string {
-		return "Info";
-	}
+    info(): string {
+        return "Info";
+    }
 }
 
 /* ============================================================================================== */
@@ -311,11 +311,11 @@ class App extends Component {
 // Guards
 
 function increase(num: number | string) {
-	if (typeof num === "number") {
-		return num + 1;
-	}
+    if (typeof num === "number") {
+        return num + 1;
+    }
 
-	return parseInt(num) + 1;
+    return parseInt(num) + 1;
 }
 
 console.log(increase(3));
@@ -324,23 +324,23 @@ console.log(increase("3"));
 /* ------------------------------------ */
 
 class MyResponse {
-	headers: { [key: string]: string } = { "Content-type": "text" };
-	ok: boolean = true;
-	result: string = JSON.stringify([{ id: "1", name: "Jamshud" }]);
+    headers: { [key: string]: string } = { "Content-type": "text" };
+    ok: boolean = true;
+    result: string = JSON.stringify([{ id: "1", name: "Jamshud" }]);
 }
 
 class MyError {
-	headers: { [key: string]: string } = { "Content-type": "text" };
-	ok: boolean = false;
-	error: string = "Error 404: page not found(";
+    headers: { [key: string]: string } = { "Content-type": "text" };
+    ok: boolean = false;
+    error: string = "Error 404: page not found(";
 }
 
 function request(res: MyError | MyResponse): string {
-	if (res instanceof MyResponse) {
-		return res.result + " success";
-	}
+    if (res instanceof MyResponse) {
+        return res.result + " success";
+    }
 
-	return res.error + " error";
+    return res.error + " error";
 }
 
 const response = new MyResponse();
@@ -354,13 +354,13 @@ console.log(request(notFound));
 type ButtonTypes = "primary" | "secondary" | "default";
 
 function Button(type: ButtonTypes): void {
-	if (type === "primary") {
-		console.log("This is primary button!");
-	} else if (type === "secondary") {
-		console.log("This is secondary button!");
-	} else {
-		console.log("This is defult button");
-	}
+    if (type === "primary") {
+        console.log("This is primary button!");
+    } else if (type === "secondary") {
+        console.log("This is secondary button!");
+    } else {
+        console.log("This is defult button");
+    }
 }
 
 Button("primary");
@@ -373,11 +373,11 @@ const arrayOfNumbers: Array<number> = [1, 2, 3, 4, 5, 7, 8, 9];
 const arrayOfStrings: Array<string> = ["Hello", "World!"];
 
 function reverse<Arr>(array: Arr[]): Arr[] {
-	return array.reverse();
+    return array.reverse();
 }
 
 const reverse2 = <Arr>(array: Arr[]): Arr[] => {
-	return array.reverse();
+    return array.reverse();
 };
 
 /* ============================================================================================== */
@@ -387,8 +387,8 @@ const reverse2 = <Arr>(array: Arr[]): Arr[] => {
 // keyof - вытаскивает из интерфейса все ключи
 
 interface Car {
-	model: any;
-	year: any;
+    model: any;
+    year: any;
 }
 
 type CarKeys = keyof Car; // "model" | "year"
@@ -402,10 +402,10 @@ const key: CarKeys = "model";
 // Pick - выбирает все перечисленные ключи после запятой
 
 type User = {
-	id: number;
-	name: string;
-	email: string;
-	createdAt: Date;
+    id: number;
+    name: string;
+    email: string;
+    createdAt: Date;
 };
 
 type UserKeysNoMeta = Pick<User, "name" | "email">; // { name: string, email: string };

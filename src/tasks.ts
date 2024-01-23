@@ -85,20 +85,23 @@
 
 // Функция map для массива
 
-const myMap = (array: any[], callback: (value: any, index: number, array: any[]) => any) => {
-	const stack: any[] = [];
+// const myMap = (
+//     array: any[],
+//     callback: (value: any, index: number, array: any[]) => any
+// ) => {
+//     const stack: any[] = [];
 
-	for (let i = 0; i < array.length; i++) {
-		const el = array[i];
-		const newElement = callback(el, i, array);
-		stack.push(newElement);
-	}
+//     for (let i = 0; i < array.length; i++) {
+//         const el = array[i];
+//         const newElement = callback(el, i, array);
+//         stack.push(newElement);
+//     }
 
-	return stack;
-};
+//     return stack;
+// };
 
-const newArray: number[] = myMap([1, 2, 3, 4], (item, index, array) => {
-	return { item, index, array };
-});
+// const newArray: number[] = myMap([1, 2, 3, 4], (item, index, array) => {
+//     return { item, index, array };
+// });
 
-console.log(newArray);
+// console.log(newArray);
