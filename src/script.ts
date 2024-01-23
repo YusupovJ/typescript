@@ -382,6 +382,23 @@ const reverse2 = <Arr>(array: Arr[]): Arr[] => {
 
 /* ============================================================================================== */
 
+const useState = <T>(value: T): [T, (newValue: T) => void] => {
+    return [
+        value,
+        (newValue: T) => {
+            value = newValue;
+        },
+    ];
+};
+
+const [message, setMessage] = useState<string>("hello world!");
+
+console.log(message);
+setMessage("Heelo");
+console.log(message);
+
+/* ============================================================================================== */
+
 // Операторы
 
 // keyof - вытаскивает из интерфейса все ключи
